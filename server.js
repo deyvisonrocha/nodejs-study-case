@@ -60,6 +60,10 @@ app.use(function (err, req, res, next) {
     res.status(404).json({
       message: 'Not found'
     })
+  } else if (err.name === 'ValidationError') {
+    res.status(400).json({
+      message: err.message
+    })
   } else {
     res.status(500).json({
       message: 'Something looks wrong :('
